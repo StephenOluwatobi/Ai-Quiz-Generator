@@ -1,3 +1,4 @@
+import 'package:ai_quiz_generator/app/navigation/main_navigation.dart';
 import 'package:ai_quiz_generator/core/constants/app_colors.dart';
 import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_time_up_screen/score_card.dart';
@@ -42,7 +43,6 @@ class QuizTimeUpScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Add your hourglass image asset here.
                     Image.asset(ProductAssets.timeExpired),
                     const SizedBox(height: 16),
 
@@ -83,7 +83,15 @@ class QuizTimeUpScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: () => returnToHome(context),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainNavigation(),
+                      ),
+                      (route) => false,
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.deepPurple,
                     foregroundColor: Colors.white,
@@ -111,16 +119,6 @@ class QuizTimeUpScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 10),
-
-              const Text(
-                'Restart this question from the beginning',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Fredoka',
-                  fontSize: 12,
-                  color: AppColors.subtitlePurple,
-                ),
-              ),
             ],
           ),
         ),

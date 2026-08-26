@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 class ResultCard extends StatelessWidget {
   const ResultCard({
     super.key,
-    required this.isNewBest,
+    // required this.isNewBest,
     required this.score,
     required this.starsEarned,
   });
 
   // Supplies the result details that change for each completed quiz.
-  final bool isNewBest;
+  // final bool isNewBest;
   final int score;
   final int starsEarned;
 
@@ -64,7 +64,7 @@ class ResultCard extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
 
-                  if (isNewBest) ...[
+                  /*  if (isNewBest) ...[
                     Positioned(
                       bottom: 10,
                       child: const Text(
@@ -78,10 +78,11 @@ class ResultCard extends StatelessWidget {
                       ),
                     ),
                   ],
+                  */
 
                   // Final Score
                   Text(
-                    '$score',
+                    '$score%',
                     style: const TextStyle(
                       fontFamily: 'Fredoka',
                       fontWeight: FontWeight.w600,
@@ -214,7 +215,13 @@ class ResultCard extends StatelessWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {
-                    // TODO: hook up play-again logic
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainNavigation(),
+                      ),
+                      (route) => false,
+                    );
                   },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 12),

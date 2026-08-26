@@ -34,7 +34,7 @@ class GeminiQuizService {
     final prompt =
         '''
       You are an expert quiz generator. Generate a multiple-choice quiz about "$topic".
-      Return strictly a JSON array of 10 questions.
+      Return strictly a JSON array of 5 questions.
       Each object in the array must have exactly this structure:
       {
         "question": "The question text",

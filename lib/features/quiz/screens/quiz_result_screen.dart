@@ -97,6 +97,7 @@ class QuizResultScreen extends StatelessWidget {
                   Positioned(
                     top: 35,
                     right: -90,
+
                     // Grows the glitter into view for a small celebration effect.
                     child: TweenAnimationBuilder<double>(
                       tween: Tween<double>(begin: 0.0, end: 1.0),
@@ -121,7 +122,7 @@ class QuizResultScreen extends StatelessWidget {
 
                   // ---------- Result card ----------
                   ResultCard(
-                    isNewBest: isNewBest,
+                    //   isNewBest: isNewBest,
                     score: score,
                     starsEarned: starsEarned,
                   ),

@@ -46,7 +46,8 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
           context,
           MaterialPageRoute(
             builder: (context) => QuizTimeUpScreen(
-              correctAnswers: currentScore,
+              // Divide the total score by 10 to get the actual number of currect answers
+              correctAnswers: currentScore ~/ 10,
               totalQuestions: widget.questions.length,
             ),
           ),
@@ -108,7 +109,7 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
                     });
                   } else {
                     //if it is the last question, go back to the for now
-
+                    _timer?.cancel();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
