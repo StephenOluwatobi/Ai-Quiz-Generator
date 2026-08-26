@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ai_quiz_generator/features/quiz/screens/quiz_result_screen.dart';
+import 'package:ai_quiz_generator/features/quiz/screens/quiz_time_up_screen.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/question_card.dart';
 
 import 'package:flutter/material.dart';
@@ -40,9 +41,16 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
       } else {
         _timer?.cancel();
 
-        //Todo this part will end the quiz when the timer runs out
-
-        print("end the quiz");
+        // Navigate to the Time's Up screen when the timer hits zero
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizTimeUpScreen(
+              correctAnswers: currentScore,
+              totalQuestions: widget.questions.length,
+            ),
+          ),
+        );
       }
     });
   }
@@ -75,9 +83,13 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
                 questionIndex: _currentIndex,
                 totalQuestions: widget.questions.length,
                 // Receives score updates from the answer card.
-                timeLeft: timeLeft, onCorrectAnswer: () { setState(() {
-                  currentScore += 10;
-                }); },
+                timeLeft: timeLeft,
+                onCorrectAnswer: () {
+                  setState(() {
+                    currentScore += 10;
+                  });
+                },
+                currentScore: currentScore,
               ),
             ),
 
@@ -101,15 +113,13 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                             QuizResultScreen( score: currentScore),
+                            QuizResultScreen(score: currentScore),
                       ),
                     );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(
-                    0xff351C62,
-                  ), 
+                  backgroundColor: const Color(0xff351C62),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),

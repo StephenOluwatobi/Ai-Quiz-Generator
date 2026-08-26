@@ -69,6 +69,8 @@ class ProductAssets {
   static const String interLight =
       "assets/fonts/Inter/static/Inter_18pt-Light.ttf";
 
+  static const String timeExpired =
+      "assets/icons/Time Expired Icon.png";
   // Lottie Animation
   static const String aiRobot = "assets/lottie/AI robo.json";
   static const String chatbot = "assets/lottie/chatbot.json";

@@ -1,4 +1,5 @@
 import 'package:ai_quiz_generator/app/navigation/main_navigation.dart';
+import 'package:ai_quiz_generator/features/quiz/screens/quiz_time_up_screen.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/answer_option.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/quiz_count_down.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/quiz_progress_indicator.dart';
@@ -16,6 +17,7 @@ class QuestionCard extends StatefulWidget {
     required this.totalQuestions,
     required this.timeLeft,
     required this.onCorrectAnswer,
+    required this.currentScore,
   });
 
   // Store the question so we can use it below
@@ -29,7 +31,7 @@ class QuestionCard extends StatefulWidget {
   final int timeLeft;
   // Sends a score update to the screen that owns the quiz.
   final VoidCallback onCorrectAnswer;
-
+final int currentScore;
   @override
   State<QuestionCard> createState() => _QuestionCardState();
 }
@@ -161,12 +163,22 @@ class _QuestionCardState extends State<QuestionCard> {
                   ),
 
                   // Countdown timer
-                  QuizCountDownTimer(
-                    onTimerFinished: () {
-                      print('TIME IS UP');
-                    },
-                    timeLeft: widget.timeLeft,
-                  ),
+                 QuizCountDownTimer(
+  timeLeft: widget.timeLeft,
+  onTimerFinished: () {
+    // This pushes the new screen and replaces the current one so they can't hit back
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizTimeUpScreen(
+          // Pass in the variables you are using to track the score in this file
+          correctAnswers: widget.currentScore, 
+          totalQuestions: widget.totalQuestions,
+        ),
+      ),
+    );
+  },
+),
                 ],
               ),
             ),

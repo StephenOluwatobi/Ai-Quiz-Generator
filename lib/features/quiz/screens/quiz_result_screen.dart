@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:ai_quiz_generator/core/constants/app_colors.dart';
 import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_result_screen/result_card.dart';
@@ -34,8 +35,6 @@ class QuizResultScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-
               // Close Button
               QuizResultCloseButtonIcon(),
 
@@ -82,7 +81,6 @@ class QuizResultScreen extends StatelessWidget {
                 clipBehavior: Clip.none,
                 // alignment: Alignment.topCenter,
                 children: [
-                  
                   // Robot image
                   Positioned(
                     top: 0,
