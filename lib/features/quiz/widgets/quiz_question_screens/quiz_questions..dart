@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Displays the question text in the quiz card.
 class QuizQuestions extends StatelessWidget {
   const QuizQuestions({
     super.key,

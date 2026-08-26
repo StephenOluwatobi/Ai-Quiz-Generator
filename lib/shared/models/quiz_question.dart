@@ -1,3 +1,4 @@
+// Represents one question and the answers shown in a quiz.
 class QuizQuestion {
   final String question;
   final List<String> options;

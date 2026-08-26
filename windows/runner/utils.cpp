@@ -7,6 +7,7 @@
 
 #include <iostream>
 
+// Opens a console so debug messages can be seen while developing on Windows.
 void CreateAndAttachConsole() {
   if (::AllocConsole()) {
     FILE *unused;
@@ -21,6 +22,7 @@ void CreateAndAttachConsole() {
   }
 }
 
+// Reads startup arguments in the text format Flutter expects.
 std::vector<std::string> GetCommandLineArguments() {
   // Convert the UTF-16 command line arguments to UTF-8 for the Engine to use.
   int argc;

@@ -2,6 +2,7 @@
 import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:flutter/material.dart';
 
+// Shows suggested quiz subjects in a row the user can scroll sideways.
 class TopicCards extends StatelessWidget {
   const TopicCards({
     super.key,
@@ -13,6 +14,7 @@ class TopicCards extends StatelessWidget {
       padding: const EdgeInsets.only(left: 18.0),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        // Keeps all topic cards in one horizontal strip.
         child: Row(
           children: [
             // First Container

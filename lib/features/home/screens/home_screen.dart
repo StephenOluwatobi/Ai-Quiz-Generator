@@ -7,6 +7,7 @@ import 'package:ai_quiz_generator/features/home/widgets/topic_card.dart';
 import 'package:ai_quiz_generator/features/home/widgets/topic_section.dart';
 import 'package:flutter/material.dart';
 
+// Shows the main dashboard where a user can start or continue a quiz.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFEF8EF),
+      // Lets the dashboard fit on smaller screens without cutting off sections.
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

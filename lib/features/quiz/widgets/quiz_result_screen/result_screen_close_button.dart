@@ -1,6 +1,7 @@
 import 'package:ai_quiz_generator/app/navigation/main_navigation.dart';
 import 'package:flutter/material.dart';
 
+// Provides a compact close button that returns from results to the home area.
 class QuizResultCloseButtonIcon extends StatelessWidget {
   const QuizResultCloseButtonIcon({super.key});
 
@@ -29,6 +30,7 @@ class QuizResultCloseButtonIcon extends StatelessWidget {
           child: IconButton(
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(),
+            // Opens the main navigation when the user closes the result screen.
             onPressed: () {
               Navigator.push(
                 context,

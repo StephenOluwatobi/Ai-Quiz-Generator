@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Keeps the main app colours in one place for a consistent look.
 class AppColors {
    static const deepPurple = Color(0xff2D1654);
   static const subtitlePurple = Color(0xff403069);

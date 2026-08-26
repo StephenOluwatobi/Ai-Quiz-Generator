@@ -3,6 +3,7 @@ import 'package:ai_quiz_generator/core/constants/app_colors.dart';
 import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:flutter/material.dart';
 
+// Displays the score, earned stars, and next actions after a quiz.
 class ResultCard extends StatelessWidget {
   const ResultCard({
     super.key,
@@ -11,6 +12,7 @@ class ResultCard extends StatelessWidget {
     required this.starsEarned,
   });
 
+  // Supplies the result details that change for each completed quiz.
   final bool isNewBest;
   final int score;
   final int starsEarned;
@@ -49,6 +51,7 @@ class ResultCard extends StatelessWidget {
             ),
 
             // Score number over the Roman Crown image
+            // Layers the crown, score, and new-best message in one space.
             SizedBox(
               height: 140,
               child: Stack(

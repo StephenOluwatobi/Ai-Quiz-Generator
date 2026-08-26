@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+// Groups the user's main quiz statistics in one small card.
 class StatsCard extends StatelessWidget {
   const StatsCard({super.key});
 
@@ -13,6 +14,7 @@ class StatsCard extends StatelessWidget {
       ),
       height: 59.0,
       width: 360.0,
+      // Spreads the three statistics evenly across the card.
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

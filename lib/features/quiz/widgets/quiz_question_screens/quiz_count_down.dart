@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+// Shows the remaining quiz time as a number and a shrinking ring.
 class QuizCountDownTimer extends StatefulWidget {
   const QuizCountDownTimer({
     super.key,
     required this.onTimerFinished,
     required this.timeLeft,
   });
+  // Receives the remaining time from the screen that owns the timer.
   final int timeLeft;
   final VoidCallback onTimerFinished;
   @override
@@ -26,6 +28,7 @@ class _QuizCountDownState extends State<QuizCountDownTimer> {
             height: 50,
             width: 50,
             child: CircularProgressIndicator(
+              // Converts seconds left into the fraction needed by the progress ring.
               value: widget.timeLeft / 60,
               strokeWidth: 4.0,
               backgroundColor: Color(0xffFC6643),

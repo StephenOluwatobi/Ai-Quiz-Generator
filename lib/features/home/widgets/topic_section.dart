@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Displays the heading above the suggested quiz topics.
 class TopicSection extends StatelessWidget {
   const TopicSection({super.key});
 

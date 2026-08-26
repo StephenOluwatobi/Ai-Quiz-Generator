@@ -7,6 +7,7 @@
 
 #include "flutter/generated_plugin_registrant.h"
 
+// Holds the Linux app state that Flutter needs at startup.
 struct _MyApplication {
   GtkApplication parent_instance;
   char** dart_entrypoint_arguments;
@@ -20,6 +21,7 @@ static void first_frame_cb(MyApplication* self, FlView* view) {
 }
 
 // Implements GApplication::activate.
+// Builds the native window and places Flutter inside it.
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
   GtkWindow* window =
@@ -79,6 +81,7 @@ static void my_application_activate(GApplication* application) {
 }
 
 // Implements GApplication::local_command_line.
+// Saves command-line values before the application is registered.
 static gboolean my_application_local_command_line(GApplication* application,
                                                   gchar*** arguments,
                                                   int* exit_status) {

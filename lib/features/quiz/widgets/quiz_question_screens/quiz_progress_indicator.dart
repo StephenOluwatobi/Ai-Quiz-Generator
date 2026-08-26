@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Shows which questions in the quiz have been reached so far.
 class QuizProgressIndicator extends StatelessWidget {
   const QuizProgressIndicator({
     super.key,
@@ -7,6 +8,7 @@ class QuizProgressIndicator extends StatelessWidget {
     required this.totalQuestions,
   });
 
+  // Uses the current position and total to draw the correct number of bars.
   final int currentIndex;
   final int totalQuestions;
 

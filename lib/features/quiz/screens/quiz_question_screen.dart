@@ -6,10 +6,12 @@ import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/qu
 import 'package:flutter/material.dart';
 import 'package:ai_quiz_generator/shared/models/quiz_question.dart';
 
+// Runs a quiz one question at a time and keeps the score for this attempt.
 class QuizQuestionScreen extends StatefulWidget {
   const QuizQuestionScreen({super.key, required this.questions});
 
   // store the list
+  // Contains the questions created for the user's chosen topic.
   final List<QuizQuestion> questions;
   @override
   State<QuizQuestionScreen> createState() =>
@@ -19,11 +21,16 @@ class QuizQuestionScreen extends StatefulWidget {
 class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
   // The reason why i am put this here is because i do not want the timer to start from the beginnig when the user move to the next question.
 
+  // Points to the question currently shown to the user.
   int _currentIndex = 0;
+  // Counts down the time allowed for the quiz.
   int timeLeft = 60;
+  // Updates the countdown once each second.
   Timer? _timer;
+  // Adds points whenever the user selects a correct answer.
   int currentScore = 0;
 
+  // Starts one timer for the full quiz instead of restarting it per question.
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (timeLeft > 0) {
@@ -47,6 +54,7 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
   }
 
   @override
+  // Stops the timer when this screen is no longer open.
   void dispose() {
     _timer?.cancel();
     super.dispose();
@@ -66,6 +74,7 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
                 currentQuizquestion: widget.questions[_currentIndex],
                 questionIndex: _currentIndex,
                 totalQuestions: widget.questions.length,
+                // Receives score updates from the answer card.
                 timeLeft: timeLeft, onCorrectAnswer: () { setState(() {
                   currentScore += 10;
                 }); },
@@ -76,6 +85,7 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
               width: 281,
               height: 47,
               child: ElevatedButton(
+                // Moves through the questions, then shows the final result.
                 onPressed: () {
                   // Check if we are at the very last question
 

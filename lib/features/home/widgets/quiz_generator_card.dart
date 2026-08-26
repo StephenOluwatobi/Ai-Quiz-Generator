@@ -2,6 +2,7 @@ import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:ai_quiz_generator/features/quiz/screens/quiz_loading_screen.dart';
 import 'package:flutter/material.dart';
 
+// Collects a topic from the user before opening the quiz loading screen.
 class QuizGeneratorCard extends StatefulWidget {
   const QuizGeneratorCard({super.key});
 
@@ -16,6 +17,7 @@ class _QuizGeneratorCardState extends State<QuizGeneratorCard> {
 
   // A switch to track if Gemini is currently thinking
 
+  // Keeps the button disabled while a quiz is being prepared.
   final bool _isLoading = false;
 
   // Cleanup to prevent memory leaks
@@ -84,6 +86,7 @@ class _QuizGeneratorCardState extends State<QuizGeneratorCard> {
           SizedBox(height: 10),
 
           //Text field
+          // Lets the user choose the subject for their new quiz.
           SizedBox(
             width: 312,
             height: 56,
@@ -170,6 +173,7 @@ class _QuizGeneratorCardState extends State<QuizGeneratorCard> {
                             );
                             return; // Stop the code right here if the field is empty
                           }
+                          // Opens the loading screen with the chosen topic.
                           Navigator.push(
                             context,
                             MaterialPageRoute(

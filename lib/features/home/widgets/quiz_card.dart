@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Displays a compact summary of a quiz and its saved score.
 class QuizCard extends StatelessWidget {
   const QuizCard({
     super.key,
@@ -8,6 +9,7 @@ class QuizCard extends StatelessWidget {
     required this.image,
   });
 
+  // Supplies the quiz details so the same card layout can show different quizzes.
   final String title;
   final int score;
   final String image;
@@ -80,6 +82,7 @@ class QuizCard extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
+                  // Turns the saved score into a quick visual progress ring.
                   CircularProgressIndicator(
                     value: score / 100,
                     strokeWidth: 6.0,

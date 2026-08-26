@@ -4,6 +4,7 @@ import 'package:ai_quiz_generator/features/quiz/screens/quiz_question_screen.dar
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+// Shows a loading animation while Gemini creates questions for a topic.
 class QuizLoadingScreen extends StatefulWidget {
   const QuizLoadingScreen({super.key, required this.topic});
 
@@ -14,6 +15,7 @@ class QuizLoadingScreen extends StatefulWidget {
 }
 
 class _QuizLoadingScreenState extends State<QuizLoadingScreen> {
+  // Controls the looping loading video.
   late VideoPlayerController _controller;
   @override
   void initState() {
@@ -34,6 +36,7 @@ class _QuizLoadingScreenState extends State<QuizLoadingScreen> {
     _fetchQuiz();
   }
 
+  // Gets the questions, then replaces this screen with the quiz when ready.
   Future<void> _fetchQuiz() async {
     // ask gemini for the questions using the topic passed to this screen
     final quizService = GeminiQuizService();
@@ -77,6 +80,7 @@ class _QuizLoadingScreenState extends State<QuizLoadingScreen> {
     return Scaffold(
       backgroundColor: const Color(0xfffff8f0),
       body: Center(
+        // Uses a still image until the video has finished starting up.
         child: _controller.value.isInitialized
             ? SizedBox.expand(
                 child: FittedBox(

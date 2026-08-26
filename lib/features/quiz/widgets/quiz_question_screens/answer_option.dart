@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Displays one answer choice and lets the parent handle the user's tap.
 class AnswerOptions extends StatelessWidget {
   const AnswerOptions({
     super.key,
@@ -8,6 +9,7 @@ class AnswerOptions extends StatelessWidget {
     required this.backgroundColor,
     required this.answerTaped,
   });
+  // Holds the label, answer text, colour, and tap action for this choice.
   final String option;
   final String question;
   final Color backgroundColor;
@@ -16,6 +18,7 @@ class AnswerOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      // Sends the chosen answer back to the question card.
       onTap: answerTaped,
       child: Container(
         width: 321,

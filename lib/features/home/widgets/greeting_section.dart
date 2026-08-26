@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Displays the personal welcome message at the top of the home screen.
 class GreetingSection extends StatelessWidget {
   const GreetingSection({super.key});
 
@@ -41,6 +42,7 @@ class GreetingSection extends StatelessWidget {
           ],
         ),
 
+        // Shows a simple circular avatar beside the greeting.
         Padding(
           padding: const EdgeInsets.only(top: 40, left: 40),
           child: Container(

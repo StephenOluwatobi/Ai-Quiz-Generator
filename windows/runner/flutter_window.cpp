@@ -9,6 +9,7 @@ FlutterWindow::FlutterWindow(const flutter::DartProject& project)
 
 FlutterWindow::~FlutterWindow() {}
 
+// Creates the Flutter view after the native window is ready.
 bool FlutterWindow::OnCreate() {
   if (!Win32Window::OnCreate()) {
     return false;
@@ -39,6 +40,7 @@ bool FlutterWindow::OnCreate() {
   return true;
 }
 
+// Releases the Flutter view before the native window closes.
 void FlutterWindow::OnDestroy() {
   if (flutter_controller_) {
     flutter_controller_ = nullptr;

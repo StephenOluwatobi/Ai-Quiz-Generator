@@ -1,3 +1,4 @@
+// Stores asset paths so widgets do not need to repeat file locations.
 class ProductAssets {
   // -- Icons
 

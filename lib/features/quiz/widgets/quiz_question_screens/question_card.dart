@@ -7,6 +7,7 @@ import 'package:ai_quiz_generator/features/quiz/widgets/quiz_question_screens/qu
 import 'package:ai_quiz_generator/shared/models/quiz_question.dart';
 import 'package:flutter/material.dart';
 
+// Shows one quiz question, its timer, progress, and answer choices.
 class QuestionCard extends StatefulWidget {
   const QuestionCard({
     super.key,
@@ -20,9 +21,13 @@ class QuestionCard extends StatefulWidget {
   // Store the question so we can use it below
   final QuizQuestion currentQuizquestion;
 
+  // Tells the card where this question sits in the quiz.
   final int questionIndex;
+  // Lets the progress label and bars show the full quiz length.
   final int totalQuestions;
+  // Passes the remaining quiz time to the countdown display.
   final int timeLeft;
+  // Sends a score update to the screen that owns the quiz.
   final VoidCallback onCorrectAnswer;
 
   @override
@@ -30,7 +35,9 @@ class QuestionCard extends StatefulWidget {
 }
 
 class _QuestionCardState extends State<QuestionCard> {
+  // Remembers the first answer tapped so answers cannot be changed afterwards.
   String? selectedAnswer;
+  // Marks the selected answer and informs the quiz screen when it is correct.
   void _onAnswerTapped(String tappedOption) {
     // this stops the user from changing answer after seeing if it is wrong
 
@@ -40,17 +47,17 @@ class _QuestionCardState extends State<QuestionCard> {
     });
     // Figure out which number goes with letter they tapped
 
-    int tappedIndex = -1; 
-  
-  if (tappedOption == 'A') {
-    tappedIndex = 0;
-  } else if (tappedOption == 'B') {
-    tappedIndex = 1;
-  } else if (tappedOption == 'C') {
-    tappedIndex = 2;
-  } else if (tappedOption == 'D') {
-    tappedIndex = 3;
-  }
+    int tappedIndex = -1;
+
+    if (tappedOption == 'A') {
+      tappedIndex = 0;
+    } else if (tappedOption == 'B') {
+      tappedIndex = 1;
+    } else if (tappedOption == 'C') {
+      tappedIndex = 2;
+    } else if (tappedOption == 'D') {
+      tappedIndex = 3;
+    }
     // Check if their number matches the actuqal correct answer number
     if (tappedIndex ==
         widget.currentQuizquestion.correctAnswerIndex) {
@@ -60,29 +67,38 @@ class _QuestionCardState extends State<QuestionCard> {
   }
 
   Color _getButtonColor(String optionLetter, String optionText) {
+    // If the user hasn't tapped anything yet, keep all buttons white
     if (selectedAnswer == null) {
       return const Color(0xffffffff);
     }
-    if (selectedAnswer == optionLetter) {
-      String expectedCorrectAnswer = widget
-          .currentQuizquestion
-          .options[widget.currentQuizquestion.correctAnswerIndex];
 
-      //print("BUTTON TAPPED : '$optionText'");
-      //print("CORRECT ANSWER: '$expectedCorrectAnswer' ");
+    // Figure out the actual correct text for this specific question
+    String expectedCorrectAnswer = widget
+        .currentQuizquestion
+        .options[widget.currentQuizquestion.correctAnswerIndex];
 
-      if (optionText.trim().toLowerCase() ==
-          expectedCorrectAnswer.trim().toLowerCase()) {
-        return Colors.green;
-      } else {
-        return Colors.red;
-      }
+    // Check if the current button being drawn iS the correct answer
+    bool isThisOptionCorrect =
+        optionText.trim().toLowerCase() ==
+        expectedCorrectAnswer.trim().toLowerCase();
+
+    // If this button is the correct answer, ALWAYS make it green (even if they didn't tap it!)
+    if (isThisOptionCorrect) {
+      return Colors.green;
     }
+
+    // If this button is the one they tapped, and it's NOT correct, make it red
+    if (selectedAnswer == optionLetter) {
+      return Colors.red;
+    }
+
+    // For all the other unselected, wrong buttons, keep them white
     return const Color(0xffffffff);
   }
 
   @override
   Widget build(BuildContext context) {
+    // Keeps the quiz controls together inside one card.
     return Padding(
       padding: const EdgeInsets.only(
         top: 16.0,
@@ -113,6 +129,7 @@ class _QuestionCardState extends State<QuestionCard> {
                 children: [
                   IconButton(
                     onPressed: () {
+                      // Returns the user to the main navigation area.
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -133,6 +150,7 @@ class _QuestionCardState extends State<QuestionCard> {
                     ),
                   ),
 
+                  // Shows the user's current place in the quiz.
                   Text(
                     "Question ${widget.questionIndex + 1} of ${widget.totalQuestions}",
                     style: const TextStyle(
@@ -172,6 +190,7 @@ class _QuestionCardState extends State<QuestionCard> {
 
             // QuizImage(),
             const SizedBox(height: 20),
+            // Each option uses the same layout but a different answer from the quiz.
             AnswerOptions(
               option: 'A',
               question: widget.currentQuizquestion.options[0],

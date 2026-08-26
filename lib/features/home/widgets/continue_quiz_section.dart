@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+// Displays the heading for quizzes the user can pick up again.
 class ContinueQuizSection extends StatelessWidget {
   const ContinueQuizSection({
     super.key,

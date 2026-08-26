@@ -1,6 +1,7 @@
 import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:flutter/material.dart';
 
+// Displays the app's bottom navigation and reports the item the user taps.
 class HomeBottomNavigation extends StatelessWidget {
   const HomeBottomNavigation({
     super.key,
@@ -8,6 +9,7 @@ class HomeBottomNavigation extends StatelessWidget {
     required this.onItemTapped,
   });
 
+  // Identifies the item that should appear active.
   final int currentIndex;
   final ValueChanged<int> onItemTapped;
 
@@ -32,6 +34,7 @@ class HomeBottomNavigation extends StatelessWidget {
     );
   }
 
+  // Builds one reusable navigation item and highlights it when selected.
   Widget navItem(String imagePath, String label, int index) {
     final bool selected = currentIndex == index;
 

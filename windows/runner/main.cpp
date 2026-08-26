@@ -5,6 +5,7 @@
 #include "flutter_window.h"
 #include "utils.h"
 
+// Starts the Windows app, creates its Flutter window, and handles messages.
 int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
                       _In_ wchar_t *command_line, _In_ int show_command) {
   // Attach to console when present (e.g., 'flutter run') or create a
@@ -17,6 +18,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   // plugins.
   ::CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
 
+  // Points the Windows runner to the Flutter files packaged with the app.
   flutter::DartProject project(L"data");
 
   std::vector<std::string> command_line_arguments =

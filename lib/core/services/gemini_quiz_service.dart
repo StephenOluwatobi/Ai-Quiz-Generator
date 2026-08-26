@@ -3,7 +3,9 @@ import 'package:ai_quiz_generator/shared/models/quiz_question.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+// Requests quiz questions from Gemini and turns the reply into app data.
 class GeminiQuizService {
+  // Keeps the configured Gemini model ready for quiz requests.
   late final GenerativeModel _model;
 
   GeminiQuizService() {
@@ -23,10 +25,12 @@ class GeminiQuizService {
     );
   }
 
+  // Builds a quiz for the topic the user entered.
   Future<List<QuizQuestion>?> generateQuizQuestions(
     String topic,
   ) async {
     // 1. The Prompt Engineering
+    // Gives Gemini a fixed reply format so the app can read it safely.
     final prompt =
         '''
       You are an expert quiz generator. Generate a multiple-choice quiz about "$topic".

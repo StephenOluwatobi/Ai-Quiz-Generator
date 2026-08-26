@@ -5,6 +5,7 @@ import 'package:ai_quiz_generator/features/quiz/widgets/quiz_result_screen/resul
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_result_screen/result_screen_close_button.dart';
 import 'package:flutter/material.dart';
 
+// Shows the score and reward details after a quiz is completed.
 class QuizResultScreen extends StatelessWidget {
   const QuizResultScreen({
     super.key,
@@ -14,6 +15,7 @@ class QuizResultScreen extends StatelessWidget {
     this.starsEarned = 120,
   });
 
+  // Supplies the details displayed on the result card.
   final String userName;
   final int score;
   final bool isNewBest;
@@ -75,6 +77,7 @@ class QuizResultScreen extends StatelessWidget {
               const SizedBox(height: 12),
 
               // Robot and container stack
+              // Layers the celebration artwork around the result card.
               Stack(
                 clipBehavior: Clip.none,
                 // alignment: Alignment.topCenter,
@@ -96,6 +99,7 @@ class QuizResultScreen extends StatelessWidget {
                   Positioned(
                     top: 35,
                     right: -90,
+                    // Grows the glitter into view for a small celebration effect.
                     child: TweenAnimationBuilder<double>(
                       tween: Tween<double>(begin: 0.0, end: 1.0),
                       duration: const Duration(seconds: 2),
