@@ -40,16 +40,17 @@ class _QuestionCardState extends State<QuestionCard> {
     });
     // Figure out which number goes with letter they tapped
 
-    int tappedIndex = 0;
-    if (tappedOption == 'A')
-      tappedIndex = 0;
-    else if (tappedOption == 'B')
-      tappedIndex = 1;
-    else if (tappedOption == 'C')
-      tappedIndex = 2;
-    else if (tappedOption == 'D')
-      tappedIndex = 3;
-
+    int tappedIndex = -1; 
+  
+  if (tappedOption == 'A') {
+    tappedIndex = 0;
+  } else if (tappedOption == 'B') {
+    tappedIndex = 1;
+  } else if (tappedOption == 'C') {
+    tappedIndex = 2;
+  } else if (tappedOption == 'D') {
+    tappedIndex = 3;
+  }
     // Check if their number matches the actuqal correct answer number
     if (tappedIndex ==
         widget.currentQuizquestion.correctAnswerIndex) {
@@ -153,7 +154,10 @@ class _QuestionCardState extends State<QuestionCard> {
             ),
             SizedBox(height: 10.0),
             // progress
-            QuizProgressIndicator(),
+            QuizProgressIndicator(
+              currentIndex: widget.questionIndex,
+              totalQuestions: widget.totalQuestions,
+            ),
 
             SizedBox(height: 10.0),
 

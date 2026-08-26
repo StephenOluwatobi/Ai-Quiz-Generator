@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 class QuizProgressIndicator extends StatelessWidget {
   const QuizProgressIndicator({
     super.key,
+    required this.currentIndex,
+    required this.totalQuestions,
   });
+
+  final int currentIndex;
+  final int totalQuestions;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-        children: List.generate(10, (index) {
-          bool isActive = index == 0;
-    
+        children: List.generate(totalQuestions, (index) {
+          // this enures the current and all past dashes light up
+          bool isActive = index <= currentIndex;
+
           return Expanded(
             child: Container(
               height: 6,

@@ -16,7 +16,7 @@ class _QuizGeneratorCardState extends State<QuizGeneratorCard> {
 
   // A switch to track if Gemini is currently thinking
 
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   // Cleanup to prevent memory leaks
 
@@ -26,6 +26,7 @@ class _QuizGeneratorCardState extends State<QuizGeneratorCard> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 350,
