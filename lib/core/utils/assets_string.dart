@@ -69,6 +69,7 @@ class ProductAssets {
   static const String interLight =
       "assets/fonts/Inter/static/Inter_18pt-Light.ttf";
 
+  // Points to the artwork shown when a quiz timer runs out.
   static const String timeExpired =
       "assets/icons/Time Expired Icon.png";
   // Lottie Animation

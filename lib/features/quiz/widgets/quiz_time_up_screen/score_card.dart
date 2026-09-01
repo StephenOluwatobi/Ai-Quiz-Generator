@@ -1,7 +1,9 @@
 import 'package:ai_quiz_generator/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+// Displays the number of correct answers and the matching percentage.
 class ScoreCard extends StatelessWidget {
+  // Receives the values calculated by the time-up screen.
   final int correctAnswers;
   final int totalQuestions;
   final int percentage;
@@ -46,6 +48,7 @@ class ScoreCard extends StatelessWidget {
 
           const SizedBox(height: 6),
 
+          // Places the score and percentage side by side for quick reading.
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

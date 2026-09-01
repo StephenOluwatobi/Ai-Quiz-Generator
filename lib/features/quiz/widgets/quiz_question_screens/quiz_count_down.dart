@@ -9,6 +9,7 @@ class QuizCountDownTimer extends StatefulWidget {
   });
   // Receives the remaining time from the screen that owns the timer.
   final int timeLeft;
+  // Lets the parent decide what should happen when time reaches zero.
   final VoidCallback onTimerFinished;
   @override
   State<QuizCountDownTimer> createState() => _QuizCountDownState();

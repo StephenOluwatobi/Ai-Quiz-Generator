@@ -4,7 +4,9 @@ import 'package:ai_quiz_generator/core/utils/assets_string.dart';
 import 'package:ai_quiz_generator/features/quiz/widgets/quiz_time_up_screen/score_card.dart';
 import 'package:flutter/material.dart';
 
+// Explains that time ran out and shows the user's quiz score so far.
 class QuizTimeUpScreen extends StatelessWidget {
+  // Supplies the score needed to build the summary card.
   final int correctAnswers;
   final int totalQuestions;
 
@@ -14,6 +16,7 @@ class QuizTimeUpScreen extends StatelessWidget {
     required this.totalQuestions,
   });
 
+  // Turns the score into a whole-number percentage for an easy summary.
   int get percentage {
     if (totalQuestions == 0) {
       return 0;
@@ -22,6 +25,7 @@ class QuizTimeUpScreen extends StatelessWidget {
     return ((correctAnswers / totalQuestions) * 100).round();
   }
 
+  // Returns to the first screen without leaving quiz pages open behind it.
   void returnToHome(BuildContext context) {
     // This returns to the first screen in the navigation stack.
     Navigator.of(context).popUntil((route) => route.isFirst);
@@ -39,6 +43,7 @@ class QuizTimeUpScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
+              // Keeps the message and score centred while the button stays below.
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,6 +88,7 @@ class QuizTimeUpScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
+                  // Clears the quiz pages before starting again from home.
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,

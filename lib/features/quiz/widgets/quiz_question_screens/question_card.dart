@@ -31,6 +31,7 @@ class QuestionCard extends StatefulWidget {
   final int timeLeft;
   // Sends a score update to the screen that owns the quiz.
   final VoidCallback onCorrectAnswer;
+  // Carries the score so the time-up screen can show the current result.
 final int currentScore;
   @override
   State<QuestionCard> createState() => _QuestionCardState();
